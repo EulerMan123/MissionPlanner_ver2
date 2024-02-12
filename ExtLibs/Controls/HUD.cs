@@ -31,9 +31,9 @@ using SkiaSharp;
 
 namespace MissionPlanner.Controls
 {
-    public class HUD2 : HUD
+    public class graphicsObject : HUD
     {
-        public HUD2() : base()
+        public graphicsObject() : base()
         {
             started = true;
             opengl = false;
@@ -108,14 +108,21 @@ namespace MissionPlanner.Controls
         {
             this.SuspendLayout();
             // 
-            // HUD2
+            // graphicsObject
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.hudcolor = System.Drawing.Color.LightGray;
-            this.Name = "HUD2";
-            this.Size = new System.Drawing.Size(466, 354);
+            this.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
+            this.Name = "graphicsObject";
+            this.Size = new System.Drawing.Size(699, 545);
             this.VSync = false;
+            this.Load += new System.EventHandler(this.graphicsObject_Load);
             this.ResumeLayout(false);
+
+        }
+
+        private void graphicsObject_Load(object sender, EventArgs e)
+        {
 
         }
     }

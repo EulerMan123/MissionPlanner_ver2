@@ -30,10 +30,10 @@ using Microsoft.Scripting.Utils;
 using WebCamService;
 using ZedGraph;
 using AltitudeAngelWings.Model;
+using MissionPlanner.Controls;
 using LogAnalyzer = MissionPlanner.Utilities.LogAnalyzer;
 using TableLayoutPanelCellPosition = System.Windows.Forms.TableLayoutPanelCellPosition;
 using UnauthorizedAccessException = System.UnauthorizedAccessException;
-
 // written by michael oborne
 
 namespace MissionPlanner.GCSViews
@@ -6277,23 +6277,35 @@ namespace MissionPlanner.GCSViews
 
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
+            
+            //MissionPlanner.Utilities.Camera c = new MissionPlanner.Utilities.Camera();
+            MissionPlanner.Controls.OSDVideo v = new MissionPlanner.Controls.OSDVideo();
+            MissionPlanner.Controls.HUD f = new MissionPlanner.Controls.HUD();
 
-0            
-            double[,] waypointtocurrent = new double[3,2]{
-                    {0,0},
-                    {1,1},
-                    {2,2}
-                    };
+            Bitmap bm = new Bitmap(1000, 1000); 
 
-            Bitmap snapshot = new Bitmap();
-            string text = OCR(snapshot);
-            string chatgpt = Chatgpt(text);
+            bm = v.gethud(bm,DateTime.UtcNow.toUnixTimeDouble());
+            bm.Save("C:\\Users\\david\\Desktop\\Vid\\vid.png");
+            //Console.Write(DateTime.Now.toUnixTimeDouble());
+            //Rectangle r = new Rectangle(0, 0, 1000, 1000);
+            //bm = (Bitmap)f.BackgroundImage.Clone();
+            //bm.Save("C:\\Users\\david\\Desktop\\Vid\\vid.png");
+
+            //double[,] waypointtocurrent = new double[3,2]{
+            //        {0,0},
+            //        {1,1},
+            //        {2,2}
+            //        };
+
+            //Bitmap snapshot = new Bitmap();
+            //string text = OCR(snapshot);
+            //string chatgpt = Chatgpt(text);
 
 
-            if(text == "STOP")
-            {
-                waypointtocurrent = ReverseWaypint(waypointtocurrent);
-            }
+            //if(text == "STOP")
+            //{
+            //    waypointtocurrent = ReverseWaypint(waypointtocurrent);
+            //}
 
 
         }

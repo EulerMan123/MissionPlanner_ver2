@@ -2852,6 +2852,16 @@ namespace MissionPlanner
                         }
                     }
 
+                    Bitmap pic = (Bitmap)GCSViews.FlightData.myhud.bgimage;
+                    if (pic != null)
+                    {
+                        pic.Save("C:\\Users\\david\\Desktop\\Vid\\pic.png");
+                        int wp_num = (int)MainV2.comPort.getWPCount();                      
+                        ushort j = (ushort)(wp_num+1);
+                        ushort k = 0;
+                        MainV2.comPort.setWP(MainV2.comPort.getWP(j),k);
+
+                    }
                     // get home point on armed status change.
                     if (armedstatus != MainV2.comPort.MAV.cs.armed && comPort.BaseStream.IsOpen)
                     {
